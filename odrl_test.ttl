@@ -1,0 +1,148 @@
+@prefix : <http://cat.nationalarchives.gov.uk#> .
+@prefix cat: <http://cat.nationalarchives.gov.uk/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://cat.nationalarchives.gov.uk> .
+
+<http://cat.nationalarchives.gov.uk> rdf:type owl:Ontology ;
+                                      owl:imports odrl: .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/ns/odrl/2/action
+odrl:action rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/constraint
+odrl:constraint rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/leftOperand
+odrl:leftOperand rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/operator
+odrl:operator rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/permission
+odrl:permission rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/rightOperand
+odrl:rightOperand rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/target
+odrl:target rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#duration
+xsd:duration rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://cat.nationalarchives.gov.uk/AT_3_69
+cat:AT_3_69 rdf:type owl:NamedIndividual ,
+                     odrl:Asset ;
+            odrl:hasPolicy cat:Closed_for_25_years_policy ;
+            rdfs:label "AT 3/69"^^xsd:string .
+
+
+###  http://cat.nationalarchives.gov.uk/Closed_for_25_years
+cat:Closed_for_25_years rdf:type owl:NamedIndividual ,
+                                 odrl:Permission ;
+                        rdfs:label "Closed for 25 years"^^xsd:string ;
+                        odrl:action odrl:read ;
+                        odrl:constraint cat:Open_in_25_years .
+
+
+###  http://cat.nationalarchives.gov.uk/Closed_for_25_years_policy
+cat:Closed_for_25_years_policy rdf:type owl:NamedIndividual ,
+                                        odrl:Set ;
+                               rdfs:label "Closed for 25 years policy"^^xsd:string ;
+                               odrl:permission cat:Closed_for_25_years .
+
+
+###  http://cat.nationalarchives.gov.uk/Closed_for_review_in_2030_policy
+cat:Closed_for_review_in_2030_policy rdf:type owl:NamedIndividual ,
+                                              odrl:Set ;
+                                     rdfs:label "Closed, for review in 2030 policy"^^xsd:string ;
+                                     odrl:permission cat:Closed_for_review_in_2030 .
+
+
+###  http://cat.nationalarchives.gov.uk/FCO_1_99
+cat:FCO_1_99 rdf:type owl:NamedIndividual ,
+                      odrl:Asset ;
+             odrl:hasPolicy cat:Open_on_transfer_policy ;
+             rdfs:label "FCO 1/99"^^xsd:string .
+
+
+###  http://cat.nationalarchives.gov.uk/OD_1_149
+cat:OD_1_149 rdf:type owl:NamedIndividual ,
+                      odrl:Asset ;
+             odrl:hasPolicy cat:Closed_for_review_in_2030_policy ;
+             rdfs:label "OD 1/149"^^xsd:string .
+
+
+###  http://cat.nationalarchives.gov.uk/Open_in_25_years
+cat:Open_in_25_years rdf:type owl:NamedIndividual ,
+                              odrl:Constraint ;
+                     rdfs:label "Open in 25 years"^^xsd:string ;
+                     odrl:leftOperand odrl:delayPeriod ;
+                     odrl:operator odrl:eq ;
+                     odrl:rightOperand "P25Y"^^xsd:duration .
+
+
+###  http://cat.nationalarchives.gov.uk/Open_on_transfer
+cat:Open_on_transfer rdf:type owl:NamedIndividual ,
+                              odrl:Permission ;
+                     rdfs:label "Open on transfer"^^xsd:string ;
+                     odrl:action odrl:read .
+
+
+###  http://cat.nationalarchives.gov.uk/Open_on_transfer_policy
+cat:Open_on_transfer_policy rdf:type owl:NamedIndividual ,
+                                     odrl:Set ;
+                            rdfs:label "Open on transfer policy"^^xsd:string ;
+                            odrl:permission cat:Open_on_transfer .
+
+
+###  http://cat.nationalarchives.gov.uk/Review_in_2030
+cat:Review_in_2030 rdf:type owl:NamedIndividual ,
+                            odrl:Constraint ;
+                   rdfs:label "Review in 2030"^^xsd:string ;
+                   odrl:leftOperand odrl:dateTime ;
+                   odrl:operator odrl:gteq ;
+                   odrl:rightOperand "2030-01-01T00:00:00"^^xsd:dateTime .
+
+
+###  http://cat.nationalarchives.gov.uk/Closed_for_review_in_2030
+cat:Closed_for_review_in_2030 rdf:type owl:NamedIndividual ,
+                                                                         odrl:Permission ;
+                                                                rdfs:label "Closed, for review in 2030"^^xsd:string ;
+                                                                odrl:action odrl:read ;
+                                                                odrl:constraint cat:Review_in_2030 .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+odrl:read odrl:target cat:FCO_1_99 .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
