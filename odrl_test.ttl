@@ -116,12 +116,6 @@ cat:Closed_Document a owl:NamedIndividual , odrl:Policy ;
 	<http://purl.org/dc/terms/description> "Asserts that the reading of this document is prohibited."^^xsd:string ;
 	rdfs:label "Closed Document"^^xsd:string .
 # 
-# http://cat.nationalarchives.gov.uk/Closed_Document_Open_Description
-
-cat:Closed_Document_Open_Description a owl:NamedIndividual , odrl:Set ;
-	odrl:inheritFrom <http://cat.nationalarchives.gov.uk/Closed_Document,_Closed_Description> ;
-	rdfs:label "Closed Document, Open Description"^^xsd:string .
-# 
 # http://cat.nationalarchives.gov.uk/Closed_for_10_years
 
 cat:Closed_for_10_years a owl:NamedIndividual , odrl:Policy ;
@@ -256,12 +250,6 @@ cat:Open_Document a owl:NamedIndividual , odrl:Policy ;
 	rdfs:label "Open Document"^^xsd:string ;
 	odrl:permission cat:Reading_permitted .
 # 
-# http://cat.nationalarchives.gov.uk/Open_Document_Open_Description
-
-cat:Open_Document_Open_Description a owl:NamedIndividual , odrl:Set ;
-	odrl:inheritFrom cat:Closed_Document_Open_Description ;
-	rdfs:label "Open Document, Open Description"^^xsd:string .
-# 
 # http://cat.nationalarchives.gov.uk/Reading_permitted
 
 cat:Reading_permitted a owl:NamedIndividual , odrl:Permission ;
@@ -333,13 +321,6 @@ cat:Retained_by_Department_under_Section_3.4 a owl:NamedIndividual , odrl:Policy
 cat:Temporarily_Retained_by_Department a owl:NamedIndividual , odrl:Policy ;
 	odrl:inheritFrom cat:Closed_Document ;
 	rdfs:label "Temporarily Retained by Department"^^xsd:string .
-# 
-# http://cat.nationalarchives.gov.uk/Closed_Document,_Closed_Description
-
-<http://cat.nationalarchives.gov.uk/Closed_Document,_Closed_Description> a owl:NamedIndividual , odrl:Set ;
-	odrl:conflict odrl:perm ;
-	odrl:prohibition cat:Description_Closed , cat:Document_Closed ;
-	rdfs:label "Closed Document, Closed Description"^^xsd:string .
 # 
 # 
 # 
