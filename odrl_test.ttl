@@ -124,7 +124,7 @@ cat:Closed_for_10_years rdf:type owl:NamedIndividual ,
                         odrl:inheritFrom cat:Closed_or_Retained_Document ;
                         <http://purl.org/dc/terms/description> "Asserts that the document can be read 10 years after the record end date."^^xsd:string ;
                         rdfs:label "Closed for 10 years"^^xsd:string ;
-                        odrl:permission cat:Reading_permitted_after_10_years .
+                        odrl:permission cat:Reading_document_permitted_after_10_years .
 
 
 ###  http://cat.nationalarchives.gov.uk/Closed_for_20_years
@@ -133,7 +133,7 @@ cat:Closed_for_20_years rdf:type owl:NamedIndividual ,
                         odrl:inheritFrom cat:Closed_or_Retained_Document ;
                         <http://purl.org/dc/terms/description> "Asserts that the document can be read 20 years after the record end date."^^xsd:string ;
                         rdfs:label "Closed for 20 years"^^xsd:string ;
-                        odrl:permission cat:Reading_permitted_after_20_years .
+                        odrl:permission cat:Reading_document_permitted_after_20_years .
 
 
 ###  http://cat.nationalarchives.gov.uk/Closed_for_30_years
@@ -142,7 +142,7 @@ cat:Closed_for_30_years rdf:type owl:NamedIndividual ,
                         odrl:inheritFrom cat:Closed_or_Retained_Document ;
                         <http://purl.org/dc/terms/description> "Asserts that the document can be read 30 years after the record end date."^^xsd:string ;
                         rdfs:label "Closed for 30 years"^^xsd:string ;
-                        odrl:permission cat:Reading_permitted_after_30_years .
+                        odrl:permission cat:Reading_document_permitted_after_30_years .
 
 
 ###  http://cat.nationalarchives.gov.uk/Closed_for_50_years
@@ -151,7 +151,7 @@ cat:Closed_for_50_years rdf:type owl:NamedIndividual ,
                         odrl:inheritFrom cat:Closed_or_Retained_Document ;
                         <http://purl.org/dc/terms/description> "Asserts that the document can be read 58 years after the record end date."^^xsd:string ;
                         rdfs:label "Closed for 50 years"^^xsd:string ;
-                        odrl:permission cat:Reading_permitted_after_50_years .
+                        odrl:permission cat:Reading_document_permitted_after_50_years .
 
 
 ###  http://cat.nationalarchives.gov.uk/Closed_for_58_years
@@ -160,7 +160,7 @@ cat:Closed_for_58_years rdf:type owl:NamedIndividual ,
                         odrl:inheritFrom cat:Closed_or_Retained_Document ;
                         <http://purl.org/dc/terms/description> "Asserts that the document can be read 58 years after the record end date."^^xsd:string ;
                         rdfs:label "Closed for 58 years"^^xsd:string ;
-                        odrl:permission cat:Reading_permitted_after_58_years .
+                        odrl:permission cat:Reading_document_permitted_after_58_years .
 
 
 ###  http://cat.nationalarchives.gov.uk/Closed_for_Reading
@@ -309,7 +309,7 @@ cat:Open_Description rdf:type owl:NamedIndividual ,
                      odrl:inheritFrom cat:Closed_Description ;
                      <http://purl.org/dc/terms/description> "Asserts that permission is given to read this description."^^xsd:string ;
                      rdfs:label "Open Description"^^xsd:string ;
-                     odrl:permission cat:Reading_permitted .
+                     odrl:permission cat:Reading_description_permitted .
 
 
 ###  http://cat.nationalarchives.gov.uk/Open_Document
@@ -318,92 +318,113 @@ cat:Open_Document rdf:type owl:NamedIndividual ,
                   odrl:inheritFrom cat:Closed_or_Retained_Document ;
                   <http://purl.org/dc/terms/description> "Asserts that permission is given to read this document."^^xsd:string ;
                   rdfs:label "Open Document"^^xsd:string ;
-                  odrl:permission cat:Reading_permitted .
+                  odrl:permission cat:Reading_document_permitted .
 
 
-###  http://cat.nationalarchives.gov.uk/Reading_permitted
-cat:Reading_permitted rdf:type owl:NamedIndividual ,
-                               odrl:Permission ;
-                      rdfs:label "Reading permitted"^^xsd:string ;
-                      odrl:action odrl:read .
+###  http://cat.nationalarchives.gov.uk/Read_Description
+cat:Read_Description rdf:type owl:NamedIndividual ,
+                              odrl:Action ;
+                     odrl:includedIn odrl:read ;
+                     rdfs:label "Read Description"^^xsd:string .
 
 
-###  http://cat.nationalarchives.gov.uk/Reading_permitted_after_10_years
-cat:Reading_permitted_after_10_years rdf:type owl:NamedIndividual ,
-                                              odrl:Permission ;
-                                     rdfs:label "Reading permitted after 10 years"^^xsd:string ;
-                                     odrl:action odrl:read ;
-                                     odrl:constraint cat:After_10_years .
+###  http://cat.nationalarchives.gov.uk/Read_Document
+cat:Read_Document rdf:type owl:NamedIndividual ,
+                           odrl:Action ;
+                  odrl:includedIn odrl:read ;
+                  rdfs:label "Read Document"^^xsd:string .
 
 
-###  http://cat.nationalarchives.gov.uk/Reading_permitted_after_20_years
-cat:Reading_permitted_after_20_years rdf:type owl:NamedIndividual ,
-                                              odrl:Permission ;
-                                     rdfs:label "Reading permitted after 20 years"^^xsd:string ;
-                                     odrl:action odrl:read ;
-                                     odrl:constraint cat:After_20_years .
+###  http://cat.nationalarchives.gov.uk/Reading_description_permitted
+cat:Reading_description_permitted rdf:type owl:NamedIndividual ,
+                                           odrl:Permission ;
+                                  rdfs:label "Reading description permitted"^^xsd:string ;
+                                  odrl:action cat:Read_Description .
 
 
-###  http://cat.nationalarchives.gov.uk/Reading_permitted_after_30_years
-cat:Reading_permitted_after_30_years rdf:type owl:NamedIndividual ,
-                                              odrl:Permission ;
-                                     rdfs:label "Reading permitted after 30 years"^^xsd:string ;
-                                     odrl:action odrl:read ;
-                                     odrl:constraint cat:After_30_years .
+###  http://cat.nationalarchives.gov.uk/Reading_document_permitted
+cat:Reading_document_permitted rdf:type owl:NamedIndividual ,
+                                        odrl:Permission ;
+                               odrl:action cat:Read_Document ;
+                               rdfs:label "Reading document permitted"^^xsd:string .
 
 
-###  http://cat.nationalarchives.gov.uk/Reading_permitted_after_50_years
-cat:Reading_permitted_after_50_years rdf:type owl:NamedIndividual ,
-                                              odrl:Permission ;
-                                     rdfs:label "Reading permitted after 50 years"^^xsd:string ;
-                                     odrl:action odrl:read ;
-                                     odrl:constraint cat:After_50_years .
+###  http://cat.nationalarchives.gov.uk/Reading_document_permitted_after_10_years
+cat:Reading_document_permitted_after_10_years rdf:type owl:NamedIndividual ,
+                                                       odrl:Permission ;
+                                              rdfs:label "Reading document permitted after 10 years"^^xsd:string ;
+                                              odrl:action cat:Read_Document ;
+                                              odrl:constraint cat:After_10_years .
 
 
-###  http://cat.nationalarchives.gov.uk/Reading_permitted_after_58_years
-cat:Reading_permitted_after_58_years rdf:type owl:NamedIndividual ,
-                                              odrl:Permission ;
-                                     rdfs:label "Reading permitted after 58 years"^^xsd:string ;
-                                     odrl:action odrl:read ;
-                                     odrl:constraint cat:After_58_years .
+###  http://cat.nationalarchives.gov.uk/Reading_document_permitted_after_20_years
+cat:Reading_document_permitted_after_20_years rdf:type owl:NamedIndividual ,
+                                                       odrl:Permission ;
+                                              rdfs:label "Reading document permitted after 20 years"^^xsd:string ;
+                                              odrl:action cat:Read_Document ;
+                                              odrl:constraint cat:After_20_years .
+
+
+###  http://cat.nationalarchives.gov.uk/Reading_document_permitted_after_30_years
+cat:Reading_document_permitted_after_30_years rdf:type owl:NamedIndividual ,
+                                                       odrl:Permission ;
+                                              rdfs:label "Reading document permitted after 30 years"^^xsd:string ;
+                                              odrl:action cat:Read_Document ;
+                                              odrl:constraint cat:After_30_years .
+
+
+###  http://cat.nationalarchives.gov.uk/Reading_document_permitted_after_50_years
+cat:Reading_document_permitted_after_50_years rdf:type owl:NamedIndividual ,
+                                                       odrl:Permission ;
+                                              rdfs:label "Reading document permitted after 50 years"^^xsd:string ;
+                                              odrl:action cat:Read_Document ;
+                                              odrl:constraint cat:After_50_years .
+
+
+###  http://cat.nationalarchives.gov.uk/Reading_document_permitted_after_58_years
+cat:Reading_document_permitted_after_58_years rdf:type owl:NamedIndividual ,
+                                                       odrl:Permission ;
+                                              rdfs:label "Reading document permitted after 58 years"^^xsd:string ;
+                                              odrl:action cat:Read_Document ;
+                                              odrl:constraint cat:After_58_years .
 
 
 ###  http://cat.nationalarchives.gov.uk/Reading_permitted_from_2023
 cat:Reading_permitted_from_2023 rdf:type owl:NamedIndividual ,
                                          odrl:Permission ;
-                                rdfs:label "Reading permitted from 2023"^^xsd:string ;
-                                odrl:action odrl:read ;
+                                rdfs:label "Reading document permitted from 2023"^^xsd:string ;
+                                odrl:action cat:Read_Document ;
                                 odrl:constraint cat:From_2023 .
 
 
 ###  http://cat.nationalarchives.gov.uk/Reading_permitted_from_2030
 cat:Reading_permitted_from_2030 rdf:type owl:NamedIndividual ,
                                          odrl:Permission ;
-                                rdfs:label "Reading permitted from 2030"^^xsd:string ;
-                                odrl:action odrl:read ;
+                                rdfs:label "Reading document permitted from 2030"^^xsd:string ;
+                                odrl:action cat:Read_Document ;
                                 odrl:constraint cat:From_2030 .
 
 
 ###  http://cat.nationalarchives.gov.uk/Reading_permitted_from_2040
 cat:Reading_permitted_from_2040 rdf:type owl:NamedIndividual ,
                                          odrl:Permission ;
-                                rdfs:label "Reading permitted from 2040"^^xsd:string ;
-                                odrl:action odrl:read ;
+                                rdfs:label "Reading document permitted from 2040"^^xsd:string ;
+                                odrl:action cat:Read_Document ;
                                 odrl:constraint cat:From_2040 .
 
 
 ###  http://cat.nationalarchives.gov.uk/Reading_permitted_from_2050
 cat:Reading_permitted_from_2050 rdf:type owl:NamedIndividual ,
                                          odrl:Permission ;
-                                rdfs:label "Reading permitted from 2050"^^xsd:string ;
-                                odrl:action odrl:read ;
+                                rdfs:label "Reading document permitted from 2050"^^xsd:string ;
+                                odrl:action cat:Read_Document ;
                                 odrl:constraint cat:From_2050 .
 
 
 ###  http://cat.nationalarchives.gov.uk/Reading_prohibited
 cat:Reading_prohibited rdf:type owl:NamedIndividual ,
                                 odrl:Prohibition ;
-                       rdfs:label "Reading prohibitted"^^xsd:string ;
+                       rdfs:label "Reading prohibited"^^xsd:string ;
                        odrl:action odrl:read .
 
 
@@ -435,6 +456,12 @@ cat:WO_373_83_774 rdf:type owl:NamedIndividual ,
                                  cat:Open_Document ;
                   <http://purl.org/dc/terms/created> "1945-03-29T00:00:00"^^xsd:dateTime ;
                   rdfs:label "WO 373/83/774"^^xsd:string .
+
+
+###  http://cat.nationalarchives.gov.uk/WO_373_83_774-policy
+cat:WO_373_83_774-policy rdf:type owl:NamedIndividual ,
+                                  odrl:Offer ;
+                         odrl:target cat:WO_373_83_774 .
 
 
 ###  http://cat.nationalarchives.gov.uk/WO_416_219_16
