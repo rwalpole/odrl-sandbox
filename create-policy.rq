@@ -1,0 +1,39 @@
+PREFIX cat: <http://cat.nationalarchives.gov.uk/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX od: <http://purl.org/twc/vocab/opendap#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+
+BASE <http://cat.nationalarchives.gov.uk/>
+
+CONSTRUCT {
+  ?policyUri a odrl:Policy, odrl:Offer ;
+    odrl:profiles cat:profile ;
+    odrl:conflict ?conflict ;    
+    odrl:permssion ?b1 ;
+    odrl:prohibition ?b2 .
+    ?b1 ?p1 ?v1 ;
+    odrl:target ?resource .
+    ?b2 ?p2 ?v2 ;
+    odrl:target ?resource .
+}
+WHERE
+{
+  BIND(cat:WO_373_83_774 AS ?resource)
+  ?resource rdfs:label ?label .
+  BIND(URI(CONCAT(REPLACE(?label,"[\\s/]","_"),"-policy")) AS ?policyUri)
+  ?policy odrl:conflict ?conflict
+  {
+    ?resource odrl:hasPolicy ?policy .
+    ?policy odrl:permission ?permission .
+    BIND(BNODE() AS ?b1)
+    ?permission ?p1 ?v1 .
+  }
+  UNION
+  {
+    ?resource odrl:hasPolicy ?policy .
+    ?policy odrl:prohibition ?prohibition .
+    BIND(BNODE() AS ?b2)
+    ?prohibition ?p2 ?v2 .
+  }
+}
